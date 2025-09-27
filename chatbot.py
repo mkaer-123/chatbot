@@ -189,12 +189,12 @@ def wikipeda(wikin):
         topic = results[0]
     try:
         summary = wikipedia.summary(topic, sentences=2)
-        print("\nChatPal: Summary:\n", summary)
+        print("\nBOT: Summary:\n", summary)
         page = wikipedia.page(topic)
-        print("\nChatPal: Title:", page.title)
-        print("\nChatPal: URL:", page.url)
-        print("\nChatPal: Content snippet:\n", page.content[:500])
-        print("ChatPal: Was this related to your question?")
+        print("\nBOT: Title:", page.title)
+        print("\nBOT: URL:", page.url)
+        print("\nBOT: Content snippet:\n", page.content[:500])
+        print("BOT: Was this related to your question?")
         time.sleep(break_point)
         related = input("user:")
         copy = random.randint(100, 999)
@@ -202,14 +202,14 @@ def wikipeda(wikin):
         with open(filename, "w", encoding="utf-8") as file:
             file.write(f"Title: {page.title}\nSummary: {summary}\nLink: {page.url}\nSearch asked: {wikin}\nResults: {results}\nRelated: {related}\nContent snippet: {page.content[:500]}")
     except wikipedia.DisambiguationError as e:
-        print("ChatPal: That topic is ambiguous. Here are some options:")
+        print("BOT: That topic is ambiguous. Here are some options:")
         for idx, option in enumerate(e.options[:5], 1):
             print(f"  {idx}. {option}")
-        print("ChatPal: Please be more specific.")
+        print("BOT: Please be more specific.")
     except wikipedia.PageError:
-        print("ChatPal: Sorry, the page could not be found. Try another topic.")
+        print("BOT: Sorry, the page could not be found. Try another topic.")
     except Exception as ex:
-        print(f"ChatPal: An error occurred: {ex}")
+        print(f"BOT: An error occurred: {ex}")
     
 def code_calange():
     chalenge_num=random.randint(1,3)
